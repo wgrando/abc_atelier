@@ -1,11 +1,11 @@
-<div class="products">
+<div class="product">
 
 	<% @products.each do |product| %>
 
 	  <h4><%= product.name %></h4>
 	  <h4>Description: <%= product.description %></h4>
 	  <% if product.image.present? %>
-	    <%= image_tag product.image %>
+	    <%= image_tag product.image, class: 'card-img-top img-fluid mx-auto d-block' %>
 	  <% end %>
 	  <h4>Price: $<%= product.price %></h4>
 	  <h4>Available in stock: <%= product.stock_quantity %></h4>
@@ -16,8 +16,12 @@
 	  <% else %>
 	  	<h4>Available for delivery</h4>
 	  <% end %>
-	  <h4>Package: <%= product.package.description %></h4>
-	  <h4>Category: <%= product.category.name %></h4>
+	  <% if product.package.present? %>
+	    <h4>Package: <%= product.package.description %></h4>
+	  <% end %>
+	  <% if product.category.present? %>
+	    <h4>Category: <%= product.category.name %></h4>
+	  <% end %>
 
 	<% end %>
 	
