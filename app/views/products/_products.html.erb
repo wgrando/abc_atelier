@@ -1,8 +1,24 @@
-<div class="items">
-	<h1>Products</h1>
-	<h4><%= product.name %></h4>
-	<p>
-		<strong>Price: $<%#= @products.price %></strong>
-	</p>
+<div class="products">
+
+	<% @products.each do |product| %>
+
+	  <h4><%= product.name %></h4>
+	  <h4>Description: <%= product.description %></h4>
+	  <% if product.image.present? %>
+	    <%= image_tag product.image %>
+	  <% end %>
+	  <h4>Price: $<%= product.price %></h4>
+	  <h4>Available in stock: <%= product.stock_quantity %></h4>
+	  <h4>Weight: <%= product.weight %>Kg</h4>
+	  <h4>Size: <%= product.size_x %>, <%= product.size_y %>, <%= product.size_z %></h4>
+	  <% if product.deliverable == false %>
+	  	<h4>Pick-up only</h4>
+	  <% else %>
+	  	<h4>Available for delivery</h4>
+	  <% end %>
+	  <h4>Package: <%= product.package.description %></h4>
+	  <h4>Category: <%= product.category.name %></h4>
+
+	<% end %>
 	
 </div>

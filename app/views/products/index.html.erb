@@ -2,10 +2,9 @@
 
 <%#= render 'products/products', products: @products %>
 
-<%#= render @products %>
+<%= render "products/products", products: @products %>
 
 <%#= @products.name %>
 
 
-<%= render partial: 'products/products', collections: @products.all %>
-
+<%#= render partial: 'products/products', collections: @products.all %>
