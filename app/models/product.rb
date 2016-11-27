@@ -1,4 +1,9 @@
 class Product < ApplicationRecord
+  def self.search(search)
+  	where("name LIKE ?", "%#{search}%") 
+  	where("description LIKE ?", "%#{search}%")
+  end
+
   belongs_to :package
   belongs_to :category
 

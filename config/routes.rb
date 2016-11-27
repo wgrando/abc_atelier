@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get  'products'     => 'products#index' # Product Index (Show All Products)
+  get  'products/:id' => 'products#show', as: 'product', id: /\d+/ # Product Show (Show A Product)
+
+  post 'products_search' => 'products#search', as: 'search_products'
+
   root to: 'products#index'
 
   resources :products

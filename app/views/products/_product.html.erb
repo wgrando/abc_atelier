@@ -1,8 +1,17 @@
 <div class="product">
-	<h1>Product</h1>
-	<h4><%= @products.name %></h4>
-	<p>
-		<strong>Price: $<%#= @products.price %></strong>
-	</p>
+
+	<% if @products.present? %>	
+
+	  <h4><%= link_to product.name, product_path(product) %></h4>
+	  <h4>Description: <%= product.description %></h4>
+	  <% if product.image.present? %>
+	    <%= image_tag product.image, class: 'card-img-top img-fluid mx-auto d-block' %>
+	  <% end %>
+	  <h4>Price: $<%= product.price %></h4>
+
+	<% else %>
+      <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+    <% end %>
+	
 	
 </div>

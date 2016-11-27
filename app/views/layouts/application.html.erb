@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AbcStore</title>
+    <title>ABC Atelier</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,8 +9,29 @@
   </head>
 
   <body>
-  	<div class="container">
+
+    <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+    <%= submit_tag "Search" %>
+    <% end %>
+
+    <div class="container">
+      <!-- Example split danger button -->
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger">Category</button>
+        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+        <% category = Category.all 
+           category.each do |c|  %>
+        
+          <%#= link_to c.name, products_index_path %>
+          <% end %>
+        </div>
+      </div>
+
       <%= yield %>
-  	</div>
+    </div>
   </body>
 </html>
