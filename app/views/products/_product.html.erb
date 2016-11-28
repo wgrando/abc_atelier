@@ -9,6 +9,8 @@
 	  <% end %>
 	  <h4>Price: $<%= product.price %></h4>
 
+	  <%= link_to '<button type="button" class="btn btn-primary">Buy</button>'.html_safe,  product_path(product) %>
+
 	<% else %>
       <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
     <% end %>
