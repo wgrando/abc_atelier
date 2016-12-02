@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'about/index'
+
   get  'products'     => 'products#index' # Product Index (Show All Products)
   get  'products/:id' => 'products#show', as: 'product', id: /\d+/ # Product Show (Show A Product)
 
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'category/:id' => 'products#sort_by_category', as: 'category', id: /\d+/
 
-  get 'about' => 'products#about', as: 'about'
+  get 'about' => 'about#index', as: 'about'
 
   post 'products_search' => 'products#search', as: 'search_products'
 
