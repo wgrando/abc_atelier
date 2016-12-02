@@ -3,11 +3,25 @@ Rails.application.routes.draw do
   get  'products'     => 'products#index' # Product Index (Show All Products)
   get  'products/:id' => 'products#show', as: 'product', id: /\d+/ # Product Show (Show A Product)
 
+  get 'products/cart' => 'products#cart'
+
+  get 'category/:id' => 'products#sort_by_category', as: 'category', id: /\d+/
+
+  get 'about' => 'products#about', as: 'about'
+
   post 'products_search' => 'products#search', as: 'search_products'
 
   root to: 'products#index'
 
-  resources :products
+  resources :products, only: [:index] do
+  	member do
+  	  post :remember_to_call
+  	  post :mark_as_called
+  	end
+  	collection do
+  		post :mark_all_as_called
+  	end
+  end
  
 
   devise_for :admin_users, ActiveAdmin::Devise.config

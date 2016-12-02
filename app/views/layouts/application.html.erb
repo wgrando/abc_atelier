@@ -15,7 +15,13 @@
     <%= submit_tag "Search" %>
     <% end %>
 
-    <div class="container">
+      <% if flash[:notice] %>
+        <div class="alert alert-success" role="alert">
+          <%= flash[:notice] %></p>
+        </div>
+      <% end %>
+
+
       <!-- Example split danger button -->
       <div class="btn-group">
         <button type="button" class="btn btn-danger">Category</button>
@@ -23,15 +29,14 @@
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <div class="dropdown-menu">
-        <% category = Category.all 
-           category.each do |c|  %>
+        <% category = Category.all
+         category.each do |c|  %>
         
-          <%#= link_to c.name, products_index_path %>
+          <%= link_to c.name, category_path(c) %>
           <% end %>
         </div>
       </div>
 
       <%= yield %>
-    </div>
   </body>
 </html>

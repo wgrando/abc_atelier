@@ -1,6 +1,24 @@
-<h1>All Products</h1>
+<% if @products_to_call.any? %>
+  <h1>Produts in the cart</h1>
+  <p>
+    <%= link_to 'Remove all items', mark_all_as_called_products_path, method: :post %>
+  </p>
+
+  <div class="card-deck-wrapper">
+  	<div class="card-deck">
+  		<%= render @products_to_call %>
+  	</div>
+  </div>
+<% else %>
+  <h1>All Products</h1>
+  <div class="card-deck-wrapper">
+  	<div class="card-deck">
+  		<%= render partial: 'product', collection: @products %>
+  	</div>
+  </div>
+<% end %>
+  <!-- <p>
+  You have visited this page <%#= pluralize(@visit_count, 'time') %>.
+</p> -->
 
 <%#= render @products %>
-
-
-<%= render partial: 'product', collection: @products %>
