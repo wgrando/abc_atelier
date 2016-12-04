@@ -13,7 +13,7 @@ ActiveAdmin.register Product do
 #   permitted
 # end
 
-permit_params :name, :description, :image, :price, :stock_quantity, :weight, :size_x, :size_y, :size_z, :deliverable, :package_id, :category_id
+permit_params :name, :description, :price, :stock_quantity, :weight, :size_x, :size_y, :size_z, :deliverable, :package_id, :category_id, :avatar
 
 form do |f|
     f.semantic_errors *f.object.errors.keys
@@ -21,7 +21,7 @@ form do |f|
     f.inputs "Details" do
       f.input :name
       f.input :description
-      f.input :image
+      f.input :avatar
       f.input :price
       f.input :stock_quantity
       f.input :weight

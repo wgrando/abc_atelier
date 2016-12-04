@@ -9,7 +9,7 @@ class Product < ApplicationRecord
 
   has_many :LineItem
 
-  validates :name, :description, :image, :price, :stock_quantity, :weight, :size_x, :size_y, :size_z, :deliverable, presence: true
+  validates :name, :description, :price, :stock_quantity, :weight, :size_x, :size_y, :size_z, :deliverable, presence: true
 
   mount_uploader :avatar, AvatarUploader
 end
