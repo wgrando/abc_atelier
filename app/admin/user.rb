@@ -13,5 +13,6 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
+permit_params :full_name, :username, :password, :address, :city, :email, :phone, :province_id
 
 end
